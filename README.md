@@ -7,7 +7,7 @@
 3) step-3: create patern template
 --------------------------------------
 
-4) step-4: create models:<br>commit-1 patern singleton
+4) step-4: create models:<br>commit-1 patern singleton<br>commit-2 patern builder(подключение к сиглетоне-база и запросы цепочки
 ---------------------------------------
 
 
