@@ -4,7 +4,7 @@ start:
 	docker-compose up -d --build
 	docker-compose exec php-fpm composer install
 	docker-compose exec node npm i
-	docker-compose exec node npm run scss:watch
+	docker-compose exec -d node npm run scss:watch
 	
 	
 composer_update:
