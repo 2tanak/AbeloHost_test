@@ -19,7 +19,7 @@ class HomeController extends BaseController
 	   
 	   $this->smarty->assign('categories', $content);
         
-        $this->content = $this->smarty->fetch('content.tpl');
+        $this->content = $this->smarty->fetch('home.tpl');
     }
 
     /**

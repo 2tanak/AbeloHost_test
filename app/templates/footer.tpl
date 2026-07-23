@@ -1,1 +1,4 @@
-<p>мы в подвале сайта</p>
+<section id="footer">
+<p>AbeloHost test
+</p>
+</section>
