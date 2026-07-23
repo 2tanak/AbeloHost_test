@@ -2,8 +2,7 @@
 /.idea
 /.vscode
 /vendor
-public/css/*
-public/css
+
 /node_modules
 /app/templates_c/*
 /app/templates_c
