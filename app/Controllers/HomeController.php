@@ -5,13 +5,19 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Models\Article;
+use App\Helpers\Helper;
 
 class HomeController extends BaseController
 {
     public function setContent(): void 
     {
-		
-       $content = Article::getLatestPerCategory(10, 0);
+	   // Fetch categories with three posts each
+        $rawContent = Article::getLatestPerCategory(10, 0);
+	   
+	    // Group the raw database data to nest post sub-arrays inside their respective categories
+        $content = Helper::groupArticlesByCategory($rawContent);
+	   
+	   
 	   echo "<pre>";print_r($content);echo "</pre>";
 	   exit();
 	   
