@@ -2,4 +2,6 @@
 /.idea
 /.vscode
 /vendor
+public/css/*
+public/css
 /node_modules

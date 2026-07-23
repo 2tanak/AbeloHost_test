@@ -14,14 +14,10 @@ class HomeController extends BaseController
 	   // Fetch categories with three posts each
         $rawContent = Article::getLatestPerCategory(10, 0);
 	   
-	    // Group the raw database data to nest post sub-arrays inside their respective categories
+	    //grouping: place an array with a post in each category
         $content = Helper::groupArticlesByCategory($rawContent);
 	   
-	   
-	   echo "<pre>";print_r($content);echo "</pre>";
-	   exit();
-	   
-        $this->smarty->assign('categories', $content);
+	   $this->smarty->assign('categories', $content);
         
         $this->content = $this->smarty->fetch('content.tpl');
     }

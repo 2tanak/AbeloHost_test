@@ -13,4 +13,5 @@
 5) step-5: Making a database query to fetch content for the homepage<br> So, we are fetching three posts linked to each category.<br>commit-1: group the flat array to get an array where each element is a category containing a nested posts array
 ------------------------------------------
 
-
+6) "step-6:" 
+<br>node compiles css, css is connected in the header
