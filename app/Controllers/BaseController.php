@@ -35,6 +35,13 @@ abstract class BaseController
      */
     protected function setHeader(): void 
     {
+		
+		$this->smarty->assign([
+        'baseUrl' => '/',
+        'themeCss' => '/css/main.css'
+        ]);
+		
+		
         $this->header = $this->smarty->fetch('header.tpl');
     }
     
