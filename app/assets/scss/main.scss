@@ -1,0 +1,16 @@
+// app/app/assets/scss/main.scss
+$bg-main: blue;
+$accent-color: #ff5a5f;
+$text-light: #ffffff;
+
+body {
+    background-color: $bg-main;
+    color: $text-light;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: $accent-color;
+}
