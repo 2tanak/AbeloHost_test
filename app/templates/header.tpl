@@ -9,5 +9,27 @@
 </head>
 <body>
 <header>
-    <!-- Здесь будет шапка сайта, логотип, навигация -->
+    <section id="navigate">
+		
+		<div class="navigate">
+				<input class="side-menu" type="checkbox" id="side-menu" />
+				<label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+
+				<nav class="nav">
+					<ul>
+						<li class='href_hover'><a href="#">Главная</a></li>
+					
+						<li class='href_hover'>
+						  <a href="#">Категория</a>
+						 </li>
+						
+						<li class='href_hover'>
+						  <a href="#">Статьи</a>
+						 </li>
+						
+					</ul>
+				</nav>
+			</div>
+		
+	</section>
 </header>

@@ -15,3 +15,6 @@
 
 6) "step-6:" 
 <br>node compiles css, css is connected in the header
+---------------------------------------------
+
+7) "step-7 Designing home page:"<br>Commit-1 - Верстаем меню,Designing the menu<br>Commit-2 - Верстаем главную страницу,Designing the home page

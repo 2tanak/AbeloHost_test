@@ -1,0 +1,39 @@
+
+
+.news__{
+   display:flex;
+   margin-top:40px;
+   justify-content:space-between;
+   flex-wrap:wrap;
+   column-gap:20px;
+   row-gap:28px;
+   margin-bottom:40px;
+  .news__item{
+	  background:#EFF6F9;
+	  border-radius:15px 15px 0px 0;
+	  overflow:hidden;
+	  max-width:370px;
+	  color:#000;
+	   position:relative;
+	   padding-bottom:15px;
+	   
+	   .news__content{
+		   margin-left:20px;
+		   
+	   }
+	  .news__text{
+		  width:224px;
+		  font-size:22px;
+		  margin-top:15px;
+		  line-height:140%;
+		  margin-bottom:15px;
+	  }
+	  a{
+		 font-size:18px;
+		 &:hover{
+			 text-decoration:underline;
+		 }
+	  }
+  }
+
+}
