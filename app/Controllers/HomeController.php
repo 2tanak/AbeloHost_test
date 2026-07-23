@@ -10,10 +10,11 @@ class HomeController extends BaseController
 {
     public function setContent(): void 
     {
-		$content ='content';
-       
 		
-		
+       $content = Article::getLatestPerCategory(10, 0);
+	   echo "<pre>";print_r($content);echo "</pre>";
+	   exit();
+	   
         $this->smarty->assign('categories', $content);
         
         $this->content = $this->smarty->fetch('content.tpl');
