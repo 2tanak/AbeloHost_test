@@ -24,7 +24,7 @@
 ---
 
 7. "step-7 Designing home page:"<br>Commit-1 - Верстаем меню,Designing the menu<br>Commit-2 - Верстаем главную страницу,Designing the home page
-
+<br>Commit-3 - дороботка верстки.dorobotka verstka
 ---
 
 8. step-8 homepage_dynamic_loop:
