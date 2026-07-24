@@ -4,6 +4,9 @@
 
 <div class="container plr-mobile">
   <div class="news__">
+  {foreach $categories as $article}
+  
+  
     <div class="news__item">
 	  <img src="images/news.png" alt="news"/>
 	
@@ -19,200 +22,8 @@
 	    15 марта 2024 г.
 	  </div>
 	</div>
-	
-	
-	
-	 <div class="news__item">
-	  <img src="images/news.png" alt="news"/>
-	
-	<div class="news__content">
-	  <div class="news__text">
-	     Появился новый ряд  автомобилей
-	  </div>
-	  <a href="#"/>Читать далее</a>
-	  
-	</div>
-	
-	<div class='badge__data'>
-	    15 марта 2024 г.
-	  </div>
-	</div>
-	
-	 <div class="news__item">
-	  <img src="images/news.png" alt="news"/>
-	
-	<div class="news__content">
-	  <div class="news__text">
-	     Появился новый ряд  автомобилей
-	  </div>
-	  <a href="#"/>Читать далее</a>
-	  
-	</div>
-	
-	<div class='badge__data'>
-	    15 марта 2024 г.
-	  </div>
-	</div>
-	
-	
-	
-	  <div class="news__item">
-	  <img src="images/news.png" alt="news"/>
-	
-	<div class="news__content">
-	  <div class="news__text">
-	     Появился новый ряд  автомобилей
-	  </div>
-	  <a href="#"/>Читать далее</a>
-	  
-	</div>
-	
-	<div class='badge__data'>
-	    15 марта 2024 г.
-	  </div>
-	</div>
-	
-	
-	  <div class="news__item">
-	  <img src="images/news.png" alt="news"/>
-	
-	<div class="news__content">
-	  <div class="news__text">
-	     Появился новый ряд  автомобилей
-	  </div>
-	  <a href="#"/>Читать далее</a>
-	  
-	</div>
-	
-<div class='badge__data'>
-	    15 марта 2024 г.
-	  </div>
-	</div>
-	
-	
-	
-	  <div class="news__item">
-	  <img src="images/news.png" alt="news"/>
-	
-	<div class="news__content">
-	  <div class="news__text">
-	     Появился новый ряд  автомобилей
-	  </div>
-	  <a href="#"/>Читать далее</a>
-	  
-	</div>
-	
-	<div class='badge__data'>
-	    15 марта 2024 г.
-	  </div>
-	</div>
-	
-	
-	
-	<div class="news__item">
-	  <img src="images/news.png" alt="news"/>
-	
-	<div class="news__content">
-	  <div class="news__text">
-	     Появился новый ряд  автомобилей
-	  </div>
-	  <a href="#"/>Читать далее</a>
-	  
-	</div>
-	
-	<div class='badge__data'>
-	    15 марта 2024 г.
-	  </div>
-	</div>
-	
-	
-	
-	<div class="news__item">
-	  <img src="images/news.png" alt="news"/>
-	
-	<div class="news__content">
-	  <div class="news__text">
-	     Появился новый ряд  автомобилей
-	  </div>
-	  <a href="#"/>Читать далее</a>
-	  
-	</div>
-	
-	<div class='badge__data'>
-	    15 марта 2024 г.
-	  </div>
-	</div>
-	
-	
-	<div class="news__item">
-	  <img src="images/news.png" alt="news"/>
-	
-	<div class="news__content">
-	  <div class="news__text">
-	     Появился новый ряд  автомобилей
-	  </div>
-	  <a href="#"/>Читать далее</a>
-	  
-	</div>
-	
-	<div class='badge__data'>
-	    15 марта 2024 г.
-	  </div>
-	</div>
-	
-	
-	<div class="news__item">
-	  <img src="images/news.png" alt="news"/>
-	
-	<div class="news__content">
-	  <div class="news__text">
-	     Появился новый ряд  автомобилей
-	  </div>
-	  <a href="#"/>Читать далее</a>
-	  
-	</div>
-	
-	<div class='badge__data'>
-	    15 марта 2024 г.
-	  </div>
-	</div>
-	
-	<div class="news__item">
-	  <img src="images/news.png" alt="news"/>
-	
-	<div class="news__content">
-	  <div class="news__text">
-	     Появился новый ряд  автомобилей
-	  </div>
-	  <a href="#"/>Читать далее</a>
-	  
-	</div>
-	
-	<div class='badge__data'>
-	    15 марта 2024 г.
-	  </div>
-	</div>
-	
-	
-	<div class="news__item">
-	  <img src="images/news.png" alt="news"/>
-	
-	<div class="news__content">
-	  <div class="news__text">
-	     Появился новый ряд  автомобилей
-	  </div>
-	  <a href="#"/>Читать далее</a>
-	  
-	</div>
-	
-	<div class='badge__data'>
-	    15 марта 2024 г.
-	  </div>
-	</div>
-	
-	
-	
-  </div>
+	{/foreach}
+</div>
   <div class='paginate__'>
 		   <div class='paginate__left'><a href="">
 		     	<svg>
