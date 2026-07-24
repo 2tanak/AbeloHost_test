@@ -1,15 +1,62 @@
 
-/*--lg---*/
-@media only screen and (min-width:768px) and (max-width:992px){
+/*--sm---*/
+@media only screen and (min-width:0px) and (max-width:576px){
+
 
 	/*-------news--------*/
 	.news__{
 		justify-content:center;
 		.news__item{
-			
+			width:auto;
+			img{
+				max-width:100%;
+			}
 		}
 	}
+	
+
+	
 }
+/*--md---*/
+@media (min-width:576px) and (max-width:768px){
+
+	.news__{
+		justify-content:center;
+		
+	}
+	
+	/*-------news-статьи--------*/
+	.stati__{
+     .stati__img{
+		 width:fit-content;
+		 margin:0 auto;
+		 margin-bottom:20px;
+		 float:none;
+		 img{
+			 max-width:100%;
+		 }
+		}
+	  }
+	  /*---------страница о нас---------*/
+.onas__item{
+		img{
+			display:none;
+		}
+		
+	}
+}
+/*--lg---*/
+@media only screen and (min-width:768px) and (max-width:992px){
+
+	.news__{
+		justify-content:center;
+		
+	}
+	
+
+
+}
+
 
 
 
