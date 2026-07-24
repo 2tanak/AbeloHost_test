@@ -58,7 +58,13 @@ class QueryBuilder
         return $this->innerJoin($relationTable, "{$this->table}.id", '=', "{$relationTable}.{$foreignKey}")
             ->groupBy("{$this->table}.id");
     }
+    public function where(string $column, string $operator, $value): self
+    {
 
+        $this->where[] = "{$column} {$operator} '{$value}'";
+
+        return $this;
+    }
     public function __toString(): string
     {
 
@@ -73,6 +79,9 @@ class QueryBuilder
                     $parts[] = "FROM {$properties['table']}";
                 } elseif ($field === 'joins') {
                     $parts[] = implode('', $properties['joins']);
+                } elseif ($field === 'where') {
+                    $whereSql = is_array($properties['where']) ? implode(' AND ', $properties['where']) : $properties['where'];
+                    $parts[] = "WHERE " . ltrim($whereSql, 'WHERE ');
                 } else {
                     $parts[] = $properties[$field];
                 }
