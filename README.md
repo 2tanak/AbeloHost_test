@@ -37,3 +37,4 @@
 <br>commit-1 - создал метод select, get и магический метод tostring
 <br>commit-2 - создал метод has для выборки не пустых категорий.Created the has method for selecting non-empty categories
 <br>commit-3 - метод where
+<br>commit-4 - Реализация жадной загрузки как а Laravel пlinking 3 posts to a category .Implementing a greedy download as a Laravel.

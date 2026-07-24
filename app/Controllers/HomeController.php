@@ -12,18 +12,19 @@ class HomeController extends BaseController
     public function setContent(): void
     {
         // Fetch categories with three posts each
-        $rawContent = Category::query()->select('categories.id', 'categories.title')->has('article_category', 'category_id')->get();
+        $rawContent = Category::query()->select('categories.id', 'categories.title')->has('article_category', 'category_id')->with('articles')->get();
 
-        echo "<pre>";
-        print_r($rawContent);
-        echo "</pre>";
-        exit();
+        
 
 
 
         //grouping: place an array with a post in each category
         $content = Helper::groupArticlesByCategory($rawContent);
-
+		
+echo "<pre>";
+        print_r($content);
+        echo "</pre>";
+        exit();
 
         //echo "<pre>";print_r($rawContent);echo "</pre>";exit();
         $this->smarty->assign('categories', $content);

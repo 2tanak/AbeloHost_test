@@ -15,7 +15,7 @@ abstract class Model
  
     public static function query(): QueryBuilder
     {
-        return new QueryBuilder(static::$table);
+        return new QueryBuilder(static::$table,static::class);
     }
 
   
