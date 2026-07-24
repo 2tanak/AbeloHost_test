@@ -1,5 +1,7 @@
 
-
+.title{
+ font-size:20px;
+}
 .news__{
    display:flex;
    margin-top:40px;
@@ -22,8 +24,8 @@
 		   
 	   }
 	  .news__text{
-		  width:224px;
-		  font-size:22px;
+		  width:auto;
+		  font-size:18px;
 		  margin-top:15px;
 		  line-height:140%;
 		  margin-bottom:15px;

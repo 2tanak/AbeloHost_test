@@ -44,7 +44,7 @@ class Article extends Model
                               FROM articles art 
                               JOIN article_category ac ON art.id = ac.article_id 
                               WHERE ac.category_id = $catId 
-                              ORDER BY art.id DESC 
+                              ORDER BY art.created_at DESC 
                               LIMIT 3)";
         }
 
