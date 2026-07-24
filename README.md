@@ -31,3 +31,7 @@
    <br>commit-1 - вставил карточку статьи в цикл в шаблоне home.
    I inserted the article card into the loop in the home template
    <br>commit-2 - заменяем содержимое карточки на динамические текста.Replacing the card content with dynamic text.
+------------------------------------------
+
+9. step-9 Object-Relational-Mapping: написал полноценый ORM как в Laravel:
+<br>commit-1 - создал метод select, get и магический метод tostring
