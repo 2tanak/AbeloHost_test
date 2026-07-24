@@ -17,6 +17,8 @@ class HomeController extends BaseController
 	    //grouping: place an array with a post in each category
         $content = Helper::groupArticlesByCategory($rawContent);
 	   ;
+	   
+	   //echo "<pre>";print_r($rawContent);echo "</pre>";exit();
 	   $this->smarty->assign('categories', $content);
         
         $this->content = $this->smarty->fetch('home.tpl');

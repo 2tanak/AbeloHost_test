@@ -20,6 +20,7 @@
 7) "step-7 Designing home page:"<br>Commit-1 - Верстаем меню,Designing the menu<br>Commit-2 - Верстаем главную страницу,Designing the home page
 ---------------------------------------------------
 
-step-8 homepage_dynamic_loop:
+8) step-8 homepage_dynamic_loop:
 <br>commit-1 -  вставил карточку статьи в цикл в шаблоне home.
 I inserted the article card into the loop in the home template
+<br>commit-2 - заменяем содержимое карточки на динамические текста.Replacing the card content with dynamic text.
