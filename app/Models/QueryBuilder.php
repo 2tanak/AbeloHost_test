@@ -14,11 +14,11 @@ class QueryBuilder
     protected array $bindings = [];
     protected string $orderBy = '';
     protected string $limit = '';
-	protected string $ofset = '';
+    protected string $ofset = '';
     protected array $withRelations = [];
     protected string $modelClass;
     protected string $unionSql = '';
-	protected array $joins = [];
+    protected array $joins = [];
     protected string $groupBy = '';
 
 
@@ -45,9 +45,9 @@ class QueryBuilder
     }
     public function innerJoin(string $table, string $first, string $operator, string $second): self
     {
-		
+
         $this->joins[] = " INNER JOIN {$table} ON {$first} {$operator} {$second}";
-		
+
         return $this;
     }
 
@@ -69,8 +69,8 @@ class QueryBuilder
      */
     public function has(string $relationTable, string $foreignKey): self
     {
-	
-		
+
+
         return $this->innerJoin($relationTable, "{$this->table}.id", '=', "{$relationTable}.{$foreignKey}")
             ->groupBy("{$this->table}.id");
     }
@@ -128,8 +128,23 @@ class QueryBuilder
         return $this;
     }
 
-    // Магическое приведение к строке SQL (универсальное)
 
+    public function paginate(int $perPage, int $page = 1): self
+    {
+        // На всякий случай защищаем логику от отрицательных страниц
+        if ($page < 1) {
+            $page = 1;
+        }
+
+        // Вычисляем смещение по формуле
+        $offsetValue = ($page - 1) * $perPage;
+
+        // Переиспользуем уже созданные методы билдера
+        return $this->limit($perPage)->offset($offsetValue);
+    }
+
+
+    // Магическое приведение к строке SQL (универсальное)
     public function __toString(): string
     {
 
