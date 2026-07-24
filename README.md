@@ -35,3 +35,4 @@
 
 9. step-9 Object-Relational-Mapping: написал полноценый ORM как в Laravel:
 <br>commit-1 - создал метод select, get и магический метод tostring
+<br>commit-2 - создал метод has для выборки не пустых категорий.Created the has method for selecting non-empty categories

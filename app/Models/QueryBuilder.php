@@ -35,8 +35,29 @@ class QueryBuilder
         $this->select = "SELECT " . (!empty($columns) ? implode(', ', $columns) : '*');
         return $this;
     }
+    public function innerJoin(string $table, string $first, string $operator, string $second): self
+    {
+        $this->joins[] = " INNER JOIN {$table} ON {$first} {$operator} {$second}";
+        return $this;
+    }
 
 
+
+
+    public function groupBy(string $column): self
+    {
+        $this->groupBy = " GROUP BY {$column}";
+        return $this;
+    }
+
+    /**
+     * Отсекает записи, у которых нет связей в промежуточной таблице
+     */
+    public function has(string $relationTable, string $foreignKey): self
+    {
+        return $this->innerJoin($relationTable, "{$this->table}.id", '=', "{$relationTable}.{$foreignKey}")
+            ->groupBy("{$this->table}.id");
+    }
 
     public function __toString(): string
     {
@@ -48,7 +69,10 @@ class QueryBuilder
         foreach ($sqlSequence as $field) {
             if (!empty($properties[$field])) {
                 if ($field === 'table') {
+
                     $parts[] = "FROM {$properties['table']}";
+                } elseif ($field === 'joins') {
+                    $parts[] = implode('', $properties['joins']);
                 } else {
                     $parts[] = $properties[$field];
                 }
