@@ -14,7 +14,7 @@ class CategoryController extends BaseController
         // 1. Собираем параметры из GET-запроса
         $catId = (int)($_GET['id'] ?? 0);
         $page = (int)($_GET['page'] ?? 1);
-
+        $sortParam = $_GET['sort'] ?? 'date'; // по умолчанию сортируем по дате
 
         if ($catId <= 0) {
             header('Location: /');
@@ -28,9 +28,15 @@ class CategoryController extends BaseController
 
         $sortColumn = 'articles.created_at'; // Дефолт — дата
 		
+		 if ($sortParam === 'views') {
+            $sortColumn = 'articles.views_count'; // По количеству просмотров
+        }
+		
+		
+		
         $articles = Article::byCategory($catId)
             ->orderBy($sortColumn, 'DESC')
-            ->paginate(4, $page)
+            ->paginate(6, $page)
             ->get();
 
         /*   
@@ -45,7 +51,7 @@ echo "<pre>";
         }
         $this->smarty->assign('category', $category);
         $this->smarty->assign('articles', $articles);
-
+        $this->smarty->assign('currentSort', $sortParam);
         // Рендерим шаблон категории
         $this->content = $this->smarty->fetch('category.tpl');
     }
