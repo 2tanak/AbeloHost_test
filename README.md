@@ -39,3 +39,7 @@
 <br>commit-3 - метод where
 <br>commit-4 - Реализация жадной загрузки как а Laravel пlinking 3 posts to a category .Implementing a greedy download as a Laravel.
 <br>commit-5 - Метод пагинации.The pagination method
+---------------------------
+
+10. step-10 <br>commit-1 - add automatic CSS cache busting using filemtime. Чтобы браузер не кешировал css, зарегал кастомный плагин
+<br>commit-2 - I finished working on the main page.закончил работать над главной страницей

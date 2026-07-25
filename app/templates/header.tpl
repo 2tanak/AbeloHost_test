@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AbeloHost Video Platform</title>
     <!-- Подключаем скомпилированный из SCSS файл стилей -->
-    <link rel="stylesheet" href="{$themeCss}">
+    <link rel="stylesheet" href="{$themeCss|auto_version}">
 </head>
 <body>
 <header>

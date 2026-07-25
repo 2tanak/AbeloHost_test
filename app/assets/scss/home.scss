@@ -1,9 +1,13 @@
-
+.category_name{
+	width:100%;
+	font-size:25px;
+}
 .title{
  font-size:20px;
 }
 .news__{
    display:flex;
+   flex-wrap: wrap;
    margin-top:40px;
    justify-content:space-between;
    flex-wrap:wrap;
