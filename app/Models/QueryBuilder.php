@@ -143,6 +143,27 @@ class QueryBuilder
         return $this->limit($perPage)->offset($offsetValue);
     }
 
+    public function offset(int $value): self
+    {
+        $this->offset = " OFFSET {$value}";
+        return $this;
+    }
+    /**
+     * Получить строго одну строку из базы данных
+     */
+    public function one(): ?array
+    {
+        // Принудительно ставим лимит в 1 строку для оптимизации
+        $this->limit(1);
+
+        $stmt = $this->db->prepare((string)$this);
+        $stmt->execute($this->bindings);
+
+        $result = $stmt->fetch();
+
+        // Если база ничего не нашла, возвращаем null, иначе — чистый плоский массив
+        return $result ?: null;
+    }
 
     // Магическое приведение к строке SQL (универсальное)
     public function __toString(): string

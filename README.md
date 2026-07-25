@@ -45,4 +45,5 @@
 <br>commit-2 - I finished working on the main page.закончил работать над главной страницей
 ---------------------
 
-11. start page category <br>commit-1 - create path and HomeController.
+11. start page category <br>commit-1 - create path and CategoryController.
+<br>commit-2 - Requesting category articles.Запрашиваем статьи категории
