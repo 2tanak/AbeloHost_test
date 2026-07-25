@@ -7,6 +7,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
 // Получаем текущий URL из адресной строки браузера
 $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
+//Если браузер в фоне запрашивает фавиконку, сразу отдаем пустой ответ и глушим скрипт
+if ($requestUri === '/favicon.ico') {
+    header('Content-Type: image/x-icon');
+    exit();
+}
+
 // Маршрутизация по страницам из ТЗ
 switch ($requestUri) {
 	

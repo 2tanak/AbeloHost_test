@@ -11,7 +11,9 @@
 			   {$article.title}
 			 {/if}
 		</h1>
+		    <div class='view'><span>views:</span> {$article.views_count}</div>
 		    <div class='stati__img'>
+			
 			 <div class='badge__data'>
 	          {if isset($article.created_at)}
 			   {$article.created_at}

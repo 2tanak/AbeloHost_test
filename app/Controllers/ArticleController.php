@@ -6,6 +6,7 @@ namespace App\Controllers;
 
 use App\Models\Article;
 use App\Helpers\Helper;
+use \App\Models\Database;
 
 class ArticleController extends BaseController
 {
@@ -20,15 +21,32 @@ class ArticleController extends BaseController
             ->innerJoin('article_category', 'articles.id', '=', 'article_category.article_id')
             ->where('articles.id', '=', $id)
             ->one();
-		if(isset($article['created_at'])){
-		   $article['created_at'] = Helper::formatDate($article['created_at']);
-		}
-		 //formatDate Helper
-		 
-		 
+			
+		if(!isset($article['id'])){
+            header('Location: /');
+            exit();
+		}	
+		
+		$catId = (int)$article['category_id'];
+		
+		$article['created_at'] = Helper::formatDate($article['created_at']);
+		
 		 
 		
-		//$this->dd($article);exit();
+		 
+	   // 2. СЫРОЙ И БЫСТРЫЙ ЗАПРОС НА УВЕЛИЧЕНИЕ ПРОСМОТРОВ НА +1
+       // Используем наш синглтон базы данных и метод query()
+	   
+		  
+          Database::getInstance()->query(
+          "UPDATE articles SET views_count = views_count + 1 WHERE id = {$id}"
+          );
+	  
+	    //$article[]
+		
+		//потому как в базе уже обновилось, чтоб не выводить старую цифру
+		$article['views_count'] = (int)$article['views_count'] + 1;
+
        
 
         $this->smarty->assign('article', $article);
@@ -40,7 +58,6 @@ class ArticleController extends BaseController
      */
     public function index(): void
     {
-        $this->setContent();
         $this->output();
     }
 }

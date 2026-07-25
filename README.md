@@ -55,3 +55,4 @@
 12. page articles
 <br>commit-1 - Create ArticlesController, verstka
 <br>commit-2 - Делаем запрос в базу для вывода статьи. Making a request to the database for the output of the article
+<br>commit-3 - Делаем количество просмотров статьи. Increasing the number of article views
