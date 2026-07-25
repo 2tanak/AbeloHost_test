@@ -31,7 +31,13 @@ abstract class BaseController
         );
 		
     }
-
+    public function dd($arr): void
+	{
+		echo "<pre>";
+		print_r($arr);
+		echo "</pre>";
+		exit();
+	}
     /**
      * Абстрактный метод для сборки контента конкретной страницы
      */

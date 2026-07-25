@@ -36,7 +36,7 @@
                                                 {if isset($article.description)}{$article.description}{/if}
                                             </div>
                                           
-                                            <a href="#">Читать далее</a>
+                                      <a href="/article?id={$article.id}">Читать далее</a>
                                         </div>
                                         
                                        

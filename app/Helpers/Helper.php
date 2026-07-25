@@ -36,8 +36,9 @@ class Helper
     /**
      * Вспомогательный приватный метод для форматирования даты
      */
-    private static function formatDate(string $dateString): string
+    public static function formatDate(string $dateString): string
     {
+		
         $timestamp = strtotime($dateString);
         if (!$timestamp) {
             return $dateString;

@@ -50,3 +50,10 @@
 <br>commit-3 - The name and description of the category were displayed. Вывели название и описание категории
 <br>commit-4 - sort by date and views
 <br>commit-5 - page-by-page pagination
+-------------------------------------------
+
+12. page articles
+<br>commit-1 - Create ArticlesController, verstka
+<br>commit-2 - Делаем запрос в базу для вывода статьи. Making a request to the database for the output of the article
+<br>commit-3 - Делаем количество просмотров статьи. Increasing the number of article views
+<br>commit-4 - Похожие посты. Related posts
