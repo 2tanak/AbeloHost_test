@@ -17,7 +17,7 @@ switch ($requestUri) {
         
     case '/category':
         $controllerName = 'App\\Controllers\\CategoryController';
-        $action = 'show';
+        $action = 'index';
         break;
         
     case '/article':

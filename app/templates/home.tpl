@@ -13,7 +13,7 @@
                             <div class="category_name">
                                 {if isset($category.title)}
 								{$category.title}
-								<a href="">all articles</a>
+								<a href="/category">all articles</a>
 								
 								{else}Без названия{/if}
                             </div>
