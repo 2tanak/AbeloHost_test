@@ -1,10 +1,7 @@
 <div class="main">
 <div class="wrap">
 	<section id="stati__">
-
-       
-		
-		<div class="container plr-mobile">
+       <div class="container plr-mobile">
           <div class="stati__">
 		  <h1>
 		 {if isset($article.title)}
@@ -29,12 +26,16 @@
 			</p>
 		</div>
 		  </div>
-		
-
 		</div>
-
-
-
 </section>
 
-	</div>
+<section id="news__" style="clear:both">
+ <div class="container plr-mobile">
+  <div class="news__">
+   {foreach $related as $article}
+     {include file='componets/card.tpl' article=$article}
+  {/foreach}
+  </div>
+ </div>
+</section>
+</div>
