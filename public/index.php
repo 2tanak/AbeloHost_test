@@ -22,7 +22,7 @@ switch ($requestUri) {
         
     case '/article':
         $controllerName = 'App\\Controllers\\ArticleController';
-        $action = 'view';
+        $action = 'index';
         break;
         
     default:
