@@ -9,15 +9,17 @@
 			 {/if}
 		</h1>
 		    <div class='view'><span>views:</span> {$article.views_count}</div>
+			{if isset($article.img)}
 		    <div class='stati__img'>
-			
+		   
 			 <div class='badge__data'>
 	          {if isset($article.created_at)}
 			   {$article.created_at}
 			 {/if}
 	         </div>
-		      <img src="images/stati.png" alt="stati"/>
+		      <img src="images/{$article.img}" alt="stati"/>
 			</div>
+		  {/if}
 			<div class='text'>
 			<p>
 	         {if isset($article.description)}
