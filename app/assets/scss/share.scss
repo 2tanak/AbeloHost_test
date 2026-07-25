@@ -94,4 +94,13 @@ min-height: 100%;
            font-weight:200;
 	   }
 	   
-
+@media (min-width: 923px) {
+.news__{
+ display:grid!important;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px; 
+}
+ .news__ .category_name{
+    grid-column: 1 / -1; 
+  }
+}

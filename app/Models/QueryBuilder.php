@@ -20,6 +20,7 @@ class QueryBuilder
     protected string $unionSql = '';
     protected array $joins = [];
     protected string $groupBy = '';
+	protected string $offset = '';
 
 
     public function __construct(string $table, string $ModelClass)
@@ -128,6 +129,39 @@ class QueryBuilder
         return $this;
     }
 
+    /**
+     * Подсчитать общее количество записей, подходящих под условия запроса
+     */
+    public function count(): int
+    {
+        // Запоминаем оригинальный селект, чтобы не сломать объект
+        $originalSelect = $this->select;
+
+        // Насильно ставим подсчет строк для MySQL
+        $this->select = "SELECT COUNT(*)";
+
+        // Лимиты и сортировка для COUNT(*) не нужны, временно убираем
+        $originalLimit = $this->limit;
+        $originalOffset = $this->offset;
+        $originalOrderBy = $this->orderBy;
+        
+        $this->limit = '';
+        $this->offset = '';
+        $this->orderBy = '';
+
+        // Генерируем SQL и выполняем
+        $stmt = $this->db->prepare((string)$this);
+        $stmt->execute($this->bindings);
+        $count = (int)$stmt->fetchColumn();
+
+        // Возвращаем билдеру его исходное состояние
+        $this->select = $originalSelect;
+        $this->limit = $originalLimit;
+        $this->offset = $originalOffset;
+        $this->orderBy = $originalOrderBy;
+
+        return $count;
+    }
 
     public function paginate(int $perPage, int $page = 1): self
     {
@@ -143,6 +177,27 @@ class QueryBuilder
         return $this->limit($perPage)->offset($offsetValue);
     }
 
+    public function offset(int $value): self
+    {
+        $this->offset = " OFFSET {$value}";
+        return $this;
+    }
+    /**
+     * Получить строго одну строку из базы данных
+     */
+    public function one(): ?array
+    {
+        // Принудительно ставим лимит в 1 строку для оптимизации
+        $this->limit(1);
+
+        $stmt = $this->db->prepare((string)$this);
+        $stmt->execute($this->bindings);
+
+        $result = $stmt->fetch();
+
+        // Если база ничего не нашла, возвращаем null, иначе — чистый плоский массив
+        return $result ?: null;
+    }
 
     // Магическое приведение к строке SQL (универсальное)
     public function __toString(): string
