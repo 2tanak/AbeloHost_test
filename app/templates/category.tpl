@@ -1,6 +1,14 @@
 <div class="main">
     <div class="wrap">
+   <!-- Заголовок и описание категории по ТЗ тимлида -->
+        <div class="category-header container" style="margin-bottom: 30px;">
+            <h1>{$category.title}</h1>
+            <p>{$category.description}</p>
+            
+         
+        </div>
 
+    
  <section id="news__">
             <div class="container plr-mobile">
                 <div class="news__">

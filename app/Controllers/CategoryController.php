@@ -21,7 +21,13 @@ class CategoryController extends BaseController
             exit();
         }
 
+         $category = Category::query()
+            ->select('id', 'title', 'description') 
+            ->where('id', '=', (string)$catId)
+            ->one();
 
+        $sortColumn = 'articles.created_at'; // Дефолт — дата
+		
         $articles = Article::byCategory($catId)
             ->orderBy($sortColumn, 'DESC')
             ->paginate(4, $page)
@@ -37,7 +43,7 @@ echo "<pre>";
             header('Location: /');
             exit();
         }
-
+        $this->smarty->assign('category', $category);
         $this->smarty->assign('articles', $articles);
 
         // Рендерим шаблон категории
