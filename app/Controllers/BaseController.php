@@ -23,6 +23,13 @@ abstract class BaseController
         $this->smarty->setTemplateDir(__DIR__ . '/../templates');
         $this->smarty->setCompileDir(__DIR__ . '/../templates_c');
         $this->smarty->setCacheDir(__DIR__ . '/../cache'); // Поправили слэш здесь
+		
+		 $this->smarty->registerPlugin(
+            "modifier", 
+            "auto_version", 
+            [$this, 'smarty_modifier_auto_version']
+        );
+		
     }
 
     /**
@@ -83,4 +90,22 @@ abstract class BaseController
     {
         echo $this->page;
     }
+	
+	// 1. Создаем функцию-модификатор
+public function smarty_modifier_auto_version($file_url) {
+    // Получаем абсолютный путь к файлу на сервере
+    $full_path = $_SERVER['DOCUMENT_ROOT'] . $file_url;
+    
+    // Если файл физически существует, добавляем временную метку
+    if (file_exists($full_path)) {
+        return $file_url . '?v=' . filemtime($full_path);
+    }
+    
+    return $file_url; // Возвращаем исходный путь, если файл не найден
+}
+
+
+
+	
+	
 }
