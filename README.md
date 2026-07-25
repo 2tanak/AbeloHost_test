@@ -49,3 +49,4 @@
 <br>commit-2 - Requesting category articles.Запрашиваем статьи категории
 <br>commit-3 - The name and description of the category were displayed. Вывели название и описание категории
 <br>commit-4 - sort by date and views
+<br>commit-5 - page-by-page pagination

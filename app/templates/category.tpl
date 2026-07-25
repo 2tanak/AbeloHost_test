@@ -16,6 +16,21 @@
     
  <section id="news__">
             <div class="container plr-mobile">
+			  {if $totalPages > 1}
+	    <div class='paginate__'>
+		  {for $p=1 to $totalPages}
+		   {if $currentPage == $p}
+		    <div><a class="active" href="/category?id={$category.id}&sort={$currentSort}&page={$p}" style="">{$p}</a></div>
+			{else}
+			<div><a href="/category?id={$category.id}&sort={$currentSort}&page={$p}" style="">{$p}</a></div>
+		   {/if}
+		   
+		   {/for}
+		  
+		</div>
+	  {/if}
+			
+			
                 <div class="news__">
                     <!-- 1. ЦИКЛ ВЫВОДА СТАТЕЙ -->
                     {if !empty($articles)}
@@ -34,5 +49,16 @@
             </div>
         </section>
       
+	
+	  
+	 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
     </div>
 </div>

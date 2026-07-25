@@ -1,5 +1,6 @@
 .paginate__{
 	display:flex;
+	
 	width:auto;
 	width:fit-content;
 	margin:0 auto;
@@ -9,7 +10,10 @@
         height:50px;
 		display:flex;
 		background:#EFF6F9;
-		
+		a.active{
+			background:black;
+			color:#fff;
+		}
 		 a{
 		  display:block;
 		  height:100%;
@@ -27,35 +31,6 @@
 
 	  }
 	}
-	 .paginate__left{
-		  border-radius:50px 0px 0px 50px;
-		  &:hover{
-			  background:#26388e;
-		      cursor:pointer;
-		  }
-	  }
-	   .paginate__right{
-		  border-radius:0px 20px 20px 0px;
-		   &:hover{
-			  background:#26388e;
-		      cursor:pointer;
-		  }
-	  }
-	.paginate__left,.paginate__right{
-		a{
-		&:hover{
-		    border:none;
-		  }	
-		  
-		}
-		 background:var(--base-color);
-	 
-	 
-	  svg{
-		 width:15px;
-		 height:16px;
-		 fill:#fff;
-		 
-	  }
-	}
+	
+	
 }
