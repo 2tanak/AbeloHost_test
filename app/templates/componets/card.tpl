@@ -1,5 +1,9 @@
 <div class="news__item">
- <img src="images/news.png" alt="news"/>
+{if isset($article.img)}
+ <a href="/article?id={$article.id}">
+ <img src="/images/{$article.img}" alt="news"/>
+ </a>
+{/if}
 <div class="news__content">
  <p class="title">
   {if isset($article.title)}
@@ -15,7 +19,7 @@
  <a href="/article?id={$article.id}">Читать далее</a>
 </div>
 <div class='badge__data'>
- {if isset($article.created_at)}{$article.created_at}{/if}
+ {if isset($article.created_at)}{$article.created_at|date_format:"%B %e, %Y"}{/if}
 </div>
 </div>
 

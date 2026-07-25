@@ -13,7 +13,7 @@ class HomeController extends BaseController
     {
         // Fetch categories with three posts each
         $rawContent = Category::query()->select('categories.id', 'categories.title')->has('article_category', 'category_id')->with('articles')->get();
-
+        
         //grouping: place an array with a post in each category
         $content = Helper::groupArticlesByCategory($rawContent);
 

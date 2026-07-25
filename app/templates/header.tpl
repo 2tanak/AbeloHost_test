@@ -7,6 +7,12 @@
     <!-- Подключаем скомпилированный из SCSS файл стилей -->
     <link rel="stylesheet" href="{$themeCss|auto_version}">
 </head>
+<style>
+ .news__item img{
+	width:370px;
+}
+	  
+</style>
 <body>
 <header>
     <section id="navigate">

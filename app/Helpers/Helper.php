@@ -70,13 +70,13 @@ class Helper
             if (!empty($row['id'])) {
                 $grouped[$catId]['articles'][] = [
                     'id' => (int)$row['id'],
-
+                    'img' => $row['img'],
                     'title' => !empty($row['title']) ? self::truncateText($row['title'], 60) : null,
                     'description' => !empty($row['description']) ? self::truncateText($row['description'], 130) : null,
 
                     'thumbnail' => $row['thumbnail'] ?? null,
                     // Вызываем приватный метод класса через self::
-                    'created_at' => !empty($row['created_at']) ? self::formatDate($row['created_at']) : null,
+                    'created_at' => !empty($row['created_at']) ? $row['created_at'] : null,
                 ];
             }
         }

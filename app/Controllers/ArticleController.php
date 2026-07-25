@@ -14,7 +14,7 @@ class ArticleController extends BaseController
     {
         $id = (int)($_GET['id'] ?? 0);
 
-
+        
         //делаем запрос но джойним с article_category, нам нужен category_id чтобы вытащить три похожие статьи
         $article = Article::query()
             ->select('articles.*', 'article_category.category_id')
@@ -29,12 +29,7 @@ class ArticleController extends BaseController
 
         $catId = (int)$article['category_id'];
 
-        $article['created_at'] = Helper::formatDate($article['created_at']);
-
-
-
-
-        // 2. СЫРОЙ И БЫСТРЫЙ ЗАПРОС НА УВЕЛИЧЕНИЕ ПРОСМОТРОВ НА +1
+       // 2. СЫРОЙ И БЫСТРЫЙ ЗАПРОС НА УВЕЛИЧЕНИЕ ПРОСМОТРОВ НА +1
         // Используем наш синглтон базы данных и метод query()
 
 
