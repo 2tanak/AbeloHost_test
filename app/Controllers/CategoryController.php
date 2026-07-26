@@ -16,11 +16,27 @@ class CategoryController extends BaseController
         $page = (int)($_GET['page'] ?? 1);
         $sortParam = $_GET['sort'] ?? 'date'; // по умолчанию сортируем по дате
 
+
         //вычисления для постраничной навитгации, запрос на реальных проектах кешируется redis
-        $perPage = 6;
+        $perPage = 5;
         $totalArticles = Article::byCategory($catId)->count();
         $totalPages = $totalArticles > 0 ? (int)ceil($totalArticles / $perPage) : 1;
 
+        //Защита от дурака
+        if ($page < 1) {
+            $page = 1;
+        }
+        if ($page >  $totalPages) {
+            $page = $totalPages;
+        }
+        //обработка параметров сортировки
+        $sortColumn = 'articles.created_at'; // Дефолт — дата
+        $allowedSort = [
+            'date'  => 'articles.created_at',
+            'views' => 'articles.views_count'
+        ];
+        // Если передан неизвестный параметр — сбрасываем на сортировку по умолчанию (date)
+        $sortColumn = $allowedSort[$sortParam] ?? 'articles.created_at';
 
 
 
@@ -43,12 +59,8 @@ class CategoryController extends BaseController
             ->where('id', '=', (string)$catId)
             ->one();
 
-        $sortColumn = 'articles.created_at'; // Дефолт — дата
-
-        if ($sortParam === 'views') {
-            $sortColumn = 'articles.views_count'; // По количеству просмотров
-        }
-
+       
+       
 
         //запрос через промежуточную таблицу, выводим статьи категории
         /**
