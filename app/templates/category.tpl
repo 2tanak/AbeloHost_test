@@ -6,9 +6,17 @@
 </div>
 <div class="sorting container">
   Сортировать по: 
- <a href="/category?id={$category.id}&sort=date" style="{if $currentSort == 'date'}font-weight: bold; color: #ff0000;{/if}">Дате</a> | 
- <a href="/category?id={$category.id}&sort=views" style="{if $currentSort == 'views'}font-weight: bold; color: #ff0000;{/if}">Просмотрам</a>
-</div>
+ 
+ <a href="/category?id={$category.id}&sort=date{if isset($currentPage) && $currentPage > 0}&page={$currentPage}{/if}" 
+   style="{if $currentSort == 'date'}font-weight: bold; color: #ff0000;{/if}">
+   Дате
+</a> 
+| 
+<a href="/category?id={$category.id}&sort=views{if isset($currentPage) && $currentPage > 0}&page={$currentPage}{/if}" 
+   style="{if $currentSort == 'views'}font-weight: bold; color: #ff0000;{/if}">
+   Просмотрам
+</a>
+
     
  <section id="news__">
   <div class="container plr-mobile">
