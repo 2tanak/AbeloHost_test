@@ -13,9 +13,7 @@
 		    <div class='stati__img'>
 		   
 			 <div class='badge__data'>
-	          {if isset($article.created_at)}
-			   {$article.created_at}
-			 {/if}
+	           {if isset($article.created_at)}{$article.created_at|date_format:"%B %e, %Y"}{/if}
 	         </div>
 		      <img src="images/{$article.img}" alt="stati"/>
 			</div>
