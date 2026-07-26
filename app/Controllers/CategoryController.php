@@ -26,7 +26,7 @@ class CategoryController extends BaseController
         if ($page < 1) {
             $page = 1;
         }
-        if ($page >  $totalPages) {
+        if ($page > $totalPages) {
             $page = $totalPages;
         }
         //обработка параметров сортировки
