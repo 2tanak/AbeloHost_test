@@ -39,6 +39,8 @@ services:
     image: mysql:8.0
     volumes:
       - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/news.sql:/docker-entrypoint-initdb.d/dump.sql
+
     environment:
       - "MYSQL_ROOT_PASSWORD=${DB_PASSWORD}"
       - "MYSQL_USER=${DB_USERNAME}"

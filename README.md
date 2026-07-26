@@ -1,5 +1,13 @@
 1. step-1: setup-docker
-
+<br>Запустить докер можно одной короткой командой если установлена утилита make - make start. You can start docker with a single short command if the make utility is installed - make start
+<br> If the utility is not installed, enter the following commands in sequence:
+<br>docker-compose up -d --build 
+<br>docker-compose up -d --build
+<br>docker-compose exec php-fpm composer install
+<br>docker-compose exec node npm i
+<br>docker-compose exec -d node npm run scss:watch
+<br> в браузере по адресу http://localhost
+<br> Дамп базы загружается в файле docker-compose.yml автоматически
 ---
 
 2. step-2: create patern mvc

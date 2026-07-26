@@ -16,6 +16,18 @@ class ArticleController extends BaseController
 
         
         //делаем запрос но джойним с article_category, нам нужен category_id чтобы вытащить три похожие статьи
+        /**
+         * Метод one() компилирует запрос с INNER JOIN для получения полей статьи 
+         * и ID её категории из промежуточной таблицы связей в один заход:
+         * 
+         * SELECT articles.*, article_category.category_id 
+         * FROM articles 
+         * INNER JOIN article_category ON articles.id = article_category.article_id 
+         * WHERE articles.id = '5' 
+         * LIMIT 1;
+         */
+
+
         $article = Article::query()
             ->select('articles.*', 'article_category.category_id')
             ->innerJoin('article_category', 'articles.id', '=', 'article_category.article_id')
@@ -29,7 +41,7 @@ class ArticleController extends BaseController
 
         $catId = (int)$article['category_id'];
 
-       // 2. СЫРОЙ И БЫСТРЫЙ ЗАПРОС НА УВЕЛИЧЕНИЕ ПРОСМОТРОВ НА +1
+        // 2. СЫРОЙ И БЫСТРЫЙ ЗАПРОС НА УВЕЛИЧЕНИЕ ПРОСМОТРОВ НА +1
         // Используем наш синглтон базы данных и метод query()
 
 
@@ -44,6 +56,26 @@ class ArticleController extends BaseController
 
 
         // 3. Вытаскиваем 3 похожих статьи 
+        /**
+         * Метод get() компилирует запрос для поиска 3 свежих похожих статей 
+         * из той же категории, отсекая текущую статью по её ID:
+         * 
+         * SELECT articles.* 
+         * FROM articles 
+         * INNER JOIN article_category ON articles.id = article_category.article_id 
+         * WHERE article_category.category_id = '1' 
+         *   AND articles.id != '5' 
+         * LIMIT 3;
+         */
+        $catId = (int)$article['category_id'];
+        $relatedArticles = Article::query()
+            ->select('articles.*')
+            ->innerJoin('article_category', 'articles.id', '=', 'article_category.article_id')
+            ->where('article_category.category_id', '=', (string)$catId)
+            ->where('articles.id', '!=', (string)$id)
+            ->limit(3)
+            ->get();
+
         $catId = (int)$article['category_id'];
         $relatedArticles = Article::query()
             ->select('articles.*')

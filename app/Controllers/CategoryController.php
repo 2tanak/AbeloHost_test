@@ -29,7 +29,15 @@ class CategoryController extends BaseController
             exit();
         }
 
-       //запрос чтобы вывести название и описание категории
+        /**
+         * Метод one() генерирует оптимизированный запрос с ограничением в одну строку:
+         * 
+         * SELECT id, title, description 
+         * FROM categories 
+         * WHERE id = '1' 
+         * LIMIT 1;
+         */
+        //запрос чтобы вывести название и описание категории
         $category = Category::query()
             ->select('id', 'title', 'description')
             ->where('id', '=', (string)$catId)
@@ -43,6 +51,17 @@ class CategoryController extends BaseController
 
 
         //запрос через промежуточную таблицу, выводим статьи категории
+        /**
+         * Метод byCategory() автоматически подшивает INNER JOIN к промежуточной таблице,
+         * а методы orderBy() и paginate() нанизывают сортировку и смещение строк (OFFSET):
+         * 
+         * SELECT articles.* 
+         * FROM articles 
+         * INNER JOIN article_category ON articles.id = article_category.article_id 
+         * WHERE article_category.category_id = '1' 
+         * ORDER BY articles.created_at DESC 
+         * LIMIT 10 OFFSET 0;
+         */
         $articles = Article::byCategory($catId)
             ->orderBy($sortColumn, 'DESC')
             ->paginate($perPage, $page)
