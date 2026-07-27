@@ -127,9 +127,13 @@ class QueryBuilder
 			// Метод связи из модели ($relation()) возвращает абсолютно новый объект QueryBuilder (билдер статей).
            // Вызов $subQuery->where() записывает знак '?' и прячет $catId в bindings именно этого нового объекта.
            // Поскольку подзапрос конструируется вручную иwhere() вызывается ровно один раз,
-           // забираем единственный сохранённый параметр по индексу [0] и переносим в пул основного билдера.
-            $this->bindings[] = $subQuery->getBindings()[0];
+           // забираем единственный сохранённый параметр по индексу [0] на текушей итерации
+           //$this->bindings[] = $subQuery->getBindings()[0];
+		   // Стало (универсально): если у инстанса будет более чем 1 where
+		   //$this->bindings соберет со всех инстансов все параметры c каждой итерации
+           $this->bindings = array_merge($this->bindings, $subQuery->getBindings());
 
+       
             $unionParts[] = "({$subQuery})";
         }
 
@@ -222,7 +226,7 @@ class QueryBuilder
 
         // ЕСЛИ ЕСТЬ ГОТОВЫЙ UNION ALL — СРАЗУ ОТДАЕМ ЕГО В GET()
         if (!empty($this->unionSql)) {
-            return $this->unionSql;
+			return $this->unionSql;
         }
 
         $properties = get_object_vars($this);
