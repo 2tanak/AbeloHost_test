@@ -21,6 +21,7 @@ class QueryBuilder
     protected array $joins = [];
     protected string $groupBy = '';
     protected string $offset = '';
+	protected string $select = '';
 
 
     public function __construct(string $table, string $ModelClass)
