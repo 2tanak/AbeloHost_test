@@ -20,7 +20,7 @@ class QueryBuilder
     protected string $unionSql = '';
     protected array $joins = [];
     protected string $groupBy = '';
-	protected string $offset = '';
+    protected string $offset = '';
 
 
     public function __construct(string $table, string $ModelClass)
@@ -79,17 +79,23 @@ class QueryBuilder
     public function where(string $column, string $operator, $value): self
     {
 
-        $this->where[] = "{$column} {$operator} '{$value}'";
+        $this->where[] = "{$column} {$operator} ?";
+        //$this->where[] = "{$column} {$operator} '{$value}'";
+        $this->bindings[] = $value;
 
         return $this;
     }
     /**
      * Цепочка для регистрации жадной загрузки связей
      */
+    public function getBindings(): array
+    {
+        return $this->bindings;
+    }
     public function with(string $relation): self
     {
         // 1. Получаем категории
-
+        //with последний в цепочке поэтому ему нужны категории для жадной загрузки
         $categories = $this->get();
 
         if (empty($categories)) {
@@ -102,6 +108,10 @@ class QueryBuilder
         $unionParts = [];
 
         foreach ($categories as $category) {
+            // Клонируем объект подзапроса, чтобы он не копил историю прошлых итераций
+            $subQuery = clone $modelInstance->{$relation}();
+
+            $modelInstance = new $this->modelClass();
             $catId = (int)$category['id'];
             $title = $category['title'];
 
@@ -112,6 +122,12 @@ class QueryBuilder
                 ->where('article_category.category_id', '=', (string)$catId)
                 ->orderBy('articles.created_at', 'DESC')
                 ->limit(3);
+            
+			// Метод связи из модели ($relation()) возвращает абсолютно новый объект QueryBuilder (билдер статей).
+           // Вызов $subQuery->where() записывает знак '?' и прячет $catId в bindings именно этого нового объекта.
+           // Поскольку подзапрос конструируется вручную иwhere() вызывается ровно один раз,
+           // забираем единственный сохранённый параметр по индексу [0] и переносим в пул основного билдера.
+            $this->bindings[] = $subQuery->getBindings()[0];
 
             $unionParts[] = "({$subQuery})";
         }
@@ -119,7 +135,7 @@ class QueryBuilder
         // 3. Записываем монолитный UNION ALL в свойства объекта
         $this->unionSql = implode(" UNION ALL ", $unionParts);
 
-        $this->bindings = [];
+        //$this->bindings = [];
         return $this;
     }
 
@@ -144,7 +160,7 @@ class QueryBuilder
         $originalLimit = $this->limit;
         $originalOffset = $this->offset;
         $originalOrderBy = $this->orderBy;
-        
+
         $this->limit = '';
         $this->offset = '';
         $this->orderBy = '';
